@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-12">
+      <h1 class="mt-5 mb-5 text-center">All Posts</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4 col-sm-12 mb-5" *ngFor="let blog of allBlogs">
+    <div class="card">
+      <div class="card-header">{{blog.title | uppercase }}</div>
+      <div class="card-body">
+        <p>{{blog.description}}</p>
+      </div>
+      <div class="card-footer">
+        <p>Posted on {{ blog.created | date }}</p>
+        <a class="btn btn-primary" routerLink="/blogView/{{blog.blogId}}">Read</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<a class="btn btn-danger" (click)="showLogin()">Login</a>
+<a class="btn btn-danger" (click)="showSignUP()">SignUp</a>
+
+<div class="signUp" *ngIf="isSignUp">
+  <p>signUp Content</p>
+</div>
+
+<div class="login" *ngIf="isLogin">
+  <p>Login Content</p>
+</div> -->
