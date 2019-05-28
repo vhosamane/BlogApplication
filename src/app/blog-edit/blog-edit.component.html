@@ -1,3 +1,47 @@
-<p>
-  blog-edit works!
-</p>
+<div class="row">
+  <div class="col-12">
+      <h1 class="mt-5 mb-5 text-center">Edit Blog</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <form  #e="ngForm" (ngSubmit)="saveEdited()">
+      <div class="form-group">
+        <label for="blogTitleLable">Blog Title</label>
+        <input type="text" class="form-control" id="blogTitleLable" name="blogTitile" [(ngModel)]="currentBlog.title" #title="ngModel" placeholder="Blog title" required [ngClass]="{'is-invalid': e.submitted && title.invalid}">
+        <div *ngIf="e.submitted && title.invalid" class="invalid-feedback">
+          <div *ngIf="title.errors.required">Blog title is mandatory</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="blogDescriptionLable">Blog Description</label>
+        <input type="text" class="form-control" id="blogDescriptionLable" name="blogDescription" [(ngModel)]="currentBlog.description" #description="ngModel" placeholder="Description" required [ngClass]="{'is-invalid': e.submitted && description.invalid}">
+        <div *ngIf="e.submitted && description.invalid" class="invalid-feedback">
+          <div *ngIf="description.errors.required">Description is mandatory</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="blogBodyLable">Enter The Blog Body</label>
+        <textarea class="form-control" id="blogBodyLable" rows="3" name="blogBodyHtml" [(ngModel)]="currentBlog.bodyHtml" #bodyHtml="ngModel" required [ngClass]="{'is-invalid': e.submitted && bodyHtml.invalid}"></textarea>
+        <div *ngIf="e.submitted && bodyHtml.invalid" class="invalid-feedback">
+          <div *ngIf="bodyHtml.errors.required">Blog Body is mandatory</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="blogCategoryLable">Category</label>
+        <select class="form-control" id="blogCategoryLable" name="blogCategory" [(ngModel)]="currentBlog.category" #category="ngModel" required [ngClass]="{'is-invalid': e.submitted && category.invalid}">
+          <option *ngFor="let Category of possibleBlogCategory" [value]="Category">
+            {{ Category }}
+          </option>
+        </select>
+        <div *ngIf="e.submitted && category.invalid" class="invalid-feedback">
+            <div *ngIf="category.errors.required">category is mandatory</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary mr-md-3">Save Post</button>
+      </div>
+    </form>
+    <p> Form is : {{ e.valid }}</p>
+  </div>
+</div>
