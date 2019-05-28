@@ -11,10 +11,10 @@
 </div>
 <div class="row">
   <div class="col-4">
-    <button class="btn btn-primary">Edit</button>
+    <button class="btn btn-primary" routerLink="/blogEdit/{{currentBlog.blogId}}">Edit</button>
   </div>
   <div class="col-4">
-    <button class="btn btn-danger">Delete</button>
+    <button class="btn btn-danger" (click)="deleteThisBlog()">Delete</button>
   </div>
   <div class="col-4">
     <button class="btn btn-warning" routerLink="/home">Back</button>
